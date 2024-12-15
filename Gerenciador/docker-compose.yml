@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  gerenciador.db:
+    image: postgres:15.0
+    container_name: postgres-container
+    environment:
+        POSTGRES_USER: root
+        POSTGRES_PASSWORD:  root
+        POSTGRES_DB: gerenciador
+    ports:
+      - "5432:5432"
+    networks:
+      - my-network
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+networks:
+  my-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
