@@ -57,5 +57,12 @@ public class UserCotroller {
         }
     }
 
+    @DeleteMapping("/deletar-usuario/{id}")
+    public ResponseEntity<String> deletarUsuarioId (@Valid @PathVariable Long id) {
+        String message = userService.deleteUserForId(id);
+        return ResponseEntity.ok(message);
+    }
+
+
 
 }

@@ -56,4 +56,17 @@ public class UserService {
                 })
                 .orElseThrow(() -> new EntityNotFoundException("Item not found with id " + id));
     }
+
+    public String deleteUserForId (Long id) {
+        if (usuarioExiste(id)) {
+            userRepository.deleteById(id);
+            return "Usuario apagado com sucesso";
+        } else {
+            throw new RuntimeException("Usuario nao encontrado");
+        }
+    }
+
+    public boolean usuarioExiste(Long id) {
+        return userRepository.existsById(id);
+    }
 }
